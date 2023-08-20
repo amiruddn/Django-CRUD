@@ -1,0 +1,44 @@
+{% extends 'add.html' %}
+{% load tz %}
+
+<!-- Title content -->
+{% block title %} Edit Product {% endblock title %}
+
+<!-- Navbar content -->
+{% block navbar-content %}
+<i class="text-warning fas fa-pen"></i>&nbsp;&nbsp; Edit Product
+{% endblock navbar-content %}
+
+
+<!-- Block card color and Title-->
+{% block card-color %} border-dark bg-warning {% endblock card-color %}
+{% block card-title %} <strong> Registered at: </strong> <span> {{ product.Created_date | timezone:"Asia/Bangkok" | date:'m/d/Y (H:i)' }} </span> {% endblock card-title %}
+
+<!-- form action -->
+{% block action %} action="/edit_product" {% endblock action %}
+
+<!-- button action -->
+{% block btn-action %} <i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock btn-action %}
+
+<!-- ========== INPUT ========== -->
+<!-- ID -->
+{% block value-id %}
+<div class="input-group mb-3">
+    <span class="side-label btn border-secondary bg-light"><i class="fas fa-key"></i></span>
+    <input type="text" class="form-control" name="id" value="{{ product.id }}" readonly>
+</div>
+{% endblock value-id %}
+<!-- Product -->
+{% block value-product %} value="{{ product.product }}" {% endblock value-product %}
+<!-- Purchase -->
+{% block value-purchase %} value="{{ product.Purchase }}" {% endblock value-purchase %}
+<!-- Sale -->
+{% block value-sale %} value="{{ product.Sale }}" {% endblock value-sale %}
+<!-- Quantity -->
+{% block value-qty %} value="{{ product.Quantity }}" {% endblock value-qty %}
+<!-- Gender -->
+{% block option %}
+<option style="background-color: #d3d3d3; color: #111;"> {{ product.Gender }} </option>
+{% endblock option %}
+<!-- Note -->
+{% block note %} {{ product.Note }} {% endblock note %}
